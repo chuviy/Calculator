@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var displayResultLabel: UILabel!
     var stillTyping = false // сейчас будет вводиться новое число
     var firstOperand: Double = 0
+    var secondOperand: Double = 0
+    var operationSign: String = "" // знак действия
+
     var currentInput: Double {
         get {
             return Double(displayResultLabel.text!)!
@@ -41,10 +44,34 @@ class ViewController: UIViewController {
     }
     
     @IBAction func twoOperandsSignPressed(_ sender: UIButton) { // нажимаем на кнопку действий
-        
+        operationSign = sender.currentTitle! // получаем заголовок кнопки
         firstOperand = currentInput
-        print(firstOperand)
         stillTyping = false
     }
-}
+    
+    func operateWithOperands (operation: (Double, Double) -> Double) { // принимаем во входящем аргументе клоужер
+        currentInput = operation(firstOperand, secondOperand)
+        stillTyping = false // после нажатия на "=" цыфры не добавляются на дисплей
+    }
+    
+    @IBAction func equalitySignPressed(_ sender: UIButton) {
+        if stillTyping {
+            secondOperand = currentInput
+        }
+        switch operationSign {
+            case "+":
+                operateWithOperands{$0 + $1} // вызов функции-замыкания принимающая два аргумента и выполняющая действие
+            case "-":
+                operateWithOperands{$0 - $1}
+            case "✕":
+                operateWithOperands{$0 * $1}
+            case "÷":
+                operateWithOperands{$0 / $1}
+        default: break
+         }
+        
+        }
+    }
+    
+
 

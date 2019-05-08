@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var displayResultLabel: UILabel!
     var stillTyping = false // сейчас будет вводиться новое число
+    var dotIsPlased = false // для выделения дробной части
     var firstOperand: Double = 0
     var secondOperand: Double = 0
     var operationSign: String = "" // знак действия
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
         operationSign = sender.currentTitle! // получаем заголовок кнопки
         firstOperand = currentInput
         stillTyping = false
+        dotIsPlased = false // у следующего числа точка пока не стоит
     }
     
     func operateWithOperands (operation: (Double, Double) -> Double) { // принимаем во входящем аргументе клоужер
@@ -56,8 +58,11 @@ class ViewController: UIViewController {
     
     @IBAction func equalitySignPressed(_ sender: UIButton) {
         if stillTyping {
-            secondOperand = currentInput
+            secondOperand = currentInput // сохраняем второй операнд
         }
+        
+        dotIsPlased = false // при следующем вводе нового числа дробная часть не выделяется
+        
         switch operationSign {
             case "+":
                 operateWithOperands{$0 + $1} // вызов функции-замыкания принимающая два аргумента и выполняющая действие
@@ -71,7 +76,43 @@ class ViewController: UIViewController {
          }
         
         }
+    @IBAction func clearButtonPressed(_ sender: UIButton) { // после нажатия на "C" можем начать все вичисления заново
+        firstOperand = 0
+        secondOperand = 0
+        currentInput = 0
+        displayResultLabel.text = "0"
+        stillTyping = false
+        dotIsPlased = false
+        operationSign = ""
+        
     }
+    
+    @IBAction func plusMinusButtonPressed(_ sender: UIButton) { //  меняет значение на дисплее на противоположный знак
+        currentInput = -currentInput
+    }
+    
+    @IBAction func persentageButtonPressed(_ sender: UIButton) { // вычисляем проценты
+        if firstOperand == 0 {
+            currentInput = currentInput / 100
+        } else {
+            secondOperand = firstOperand * currentInput / 100
+        }
+    }
+    
+    @IBAction func squareRootButtonPressed(_ sender: UIButton) { // вычисляем квадратный корень
+        currentInput = sqrt(currentInput)
+    }
+    
+    @IBAction func dotButtonPressed(_ sender: UIButton) { // выделяем дробную часть
+        if stillTyping && !dotIsPlased { // если можно писать и точка еще не стоит
+            displayResultLabel.text = displayResultLabel.text! + "."
+            dotIsPlased = true
+            
+        } else if !stillTyping && !dotIsPlased { // если нельзя печатать и точка не стоит
+            displayResultLabel.text = "0."
+        }
+    }
+}
     
 
 

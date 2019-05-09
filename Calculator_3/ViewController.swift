@@ -25,10 +25,10 @@ class ViewController: UIViewController {
         set {
             let value = "\(newValue)" // ложим новое значение в строковую константу
             let valueArray = value.components(separatedBy: ".") // помещаем строку в массив разделив элементы символом "." 
-            if valueArray[1] == "0" {
-                displayResultLabel.text = "\(valueArray[0])"
-            } else {
-                displayResultLabel.text = "\(newValue)"
+            if valueArray[1] == "0" { // если правая часть массива(числа) т.е.  его 1-й элемент  = 0
+                displayResultLabel.text = "\(valueArray[0])" // отображаем на дисплее 0-й эл массива т.е. левую часть числа до разделителя "."
+            } else { // иначе если после "." дробная часть !0 например: 25.45345
+                displayResultLabel.text = "\(newValue)" // отображаем новое дробное число без изменений т.е. как есть не из массива
             }
             stillTyping = false // вводим новое число
         }
@@ -52,8 +52,8 @@ class ViewController: UIViewController {
     
     @IBAction func twoOperandsSignPressed(_ sender: UIButton) { // нажимаем на кнопку действий
         operationSign = sender.currentTitle! // получаем заголовок кнопки
-        firstOperand = currentInput
-        stillTyping = false
+        firstOperand = currentInput // ложим текущее число в "firstOperand"
+        stillTyping = false 
         dotIsPlased = false // у следующего числа точка пока не стоит
     }
     

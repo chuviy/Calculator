@@ -23,7 +23,13 @@ class ViewController: UIViewController {
         }
         
         set {
-            displayResultLabel.text = "\(newValue)"
+            let value = "\(newValue)" // ложим новое значение в строковую константу
+            let valueArray = value.components(separatedBy: ".") // помещаем строку в массив разделив элементы символом "." 
+            if valueArray[1] == "0" {
+                displayResultLabel.text = "\(valueArray[0])"
+            } else {
+                displayResultLabel.text = "\(newValue)"
+            }
             stillTyping = false // вводим новое число
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D50D1E4234B178A00C54B13 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8D50D1E3234B178A00C54B13 /* .gitignore */; };
 		B3EE99A9227FD80900767CDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EE99A8227FD80900767CDC /* AppDelegate.swift */; };
 		B3EE99AB227FD80900767CDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EE99AA227FD80900767CDC /* ViewController.swift */; };
 		B3EE99AE227FD80900767CDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EE99AC227FD80900767CDC /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D50D1E3234B178A00C54B13 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B3EE99A5227FD80900767CDC /* Calculator_3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator_3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EE99A8227FD80900767CDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3EE99AA227FD80900767CDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				B3EE99A8227FD80900767CDC /* AppDelegate.swift */,
 				B3EE99AA227FD80900767CDC /* ViewController.swift */,
+				8D50D1E3234B178A00C54B13 /* .gitignore */,
 				B3EE99AC227FD80900767CDC /* Main.storyboard */,
 				B3EE99AF227FD80900767CDC /* Assets.xcassets */,
 				B3EE99B1227FD80900767CDC /* LaunchScreen.storyboard */,
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D50D1E4234B178A00C54B13 /* .gitignore in Resources */,
 				B3EE99B3227FD80900767CDC /* LaunchScreen.storyboard in Resources */,
 				B3EE99B0227FD80900767CDC /* Assets.xcassets in Resources */,
 				B3EE99AE227FD80900767CDC /* Main.storyboard in Resources */,

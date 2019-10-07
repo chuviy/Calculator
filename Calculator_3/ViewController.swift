@@ -4,7 +4,7 @@
 //
 //  Created by Aleksey3a on 06.05.19.
 //  Copyright © 2019 Antokhin Aleksey. All rights reserved.
-//
+
 
 import UIKit
 
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
             let valueArray = value.components(separatedBy: ".") // помещаем строку в массив разделив элементы символом "." 
             if valueArray[1] == "0" { // если правая часть массива(числа) т.е.  его 1-й элемент  = 0
                 displayResultLabel.text = "\(valueArray[0])" // отображаем на дисплее 0-й эл массива т.е. левую часть числа до разделителя "."
-            } else { // иначе если после "." дробная часть !0 например: 25.45345
+            } else { // иначе если после "." дробная часть не равна 0, например: 25.45345
                 displayResultLabel.text = "\(newValue)" // отображаем новое дробное число без изменений т.е. как есть не из массива
             }
             stillTyping = false // вводим новое число
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         let number = sender.currentTitle!
 
         if stillTyping {
-            if (displayResultLabel.text?.characters.count)! < 20 {
+            if (displayResultLabel.text?.count)! < 20 {
                 displayResultLabel.text = displayResultLabel.text! + number
             }
         } else {
